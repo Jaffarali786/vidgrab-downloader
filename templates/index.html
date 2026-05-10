@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download YouTube and TikTok videos in 1080p quality. Single and bulk download support. TikTok without watermark.">
+    <title>VidGrab - YouTube & TikTok Downloader</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+</head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-logo">
+                <div class="header-icon">🎬</div>
+            </div>
+            <h1>VidGrab</h1>
+            <p>Download YouTube & TikTok videos in high quality</p>
+        </header>
+
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+            <button class="mode-btn active" id="mode-single" onclick="setMode('single')">
+                🎯 Single Download
+            </button>
+            <button class="mode-btn" id="mode-bulk" onclick="setMode('bulk')">
+                📦 Bulk Download
+            </button>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <div class="input-card">
+
+                <!-- Single URL Input -->
+                <div id="single-input">
+                    <label class="input-label">📎 Paste Video URL</label>
+                    <div class="url-input-wrapper">
+                        <input type="text" class="url-input" id="url-input"
+                               placeholder="https://youtube.com/watch?v=... or https://tiktok.com/..."
+                               autocomplete="off">
+                        <button class="btn btn-primary" id="fetch-btn" onclick="fetchInfo()">
+                            🔍 Fetch
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bulk URL Input -->
+                <div id="bulk-input" class="hidden">
+                    <label class="input-label">📋 Paste Multiple URLs (one per line)</label>
+                    <textarea class="url-textarea" id="bulk-urls"
+                              placeholder="https://youtube.com/watch?v=abc123&#10;https://youtube.com/watch?v=def456&#10;https://tiktok.com/@user/video/789&#10;..."></textarea>
+                </div>
+
+                <!-- Quality Selection -->
+                <div class="quality-section">
+                    <span class="quality-label">Quality:</span>
+                    <div class="quality-chips">
+                        <button class="quality-chip active" data-quality="1080" onclick="setQuality(1080)">1080p</button>
+                        <button class="quality-chip" data-quality="720" onclick="setQuality(720)">720p</button>
+                        <button class="quality-chip" data-quality="480" onclick="setQuality(480)">480p</button>
+                        <button class="quality-chip" data-quality="360" onclick="setQuality(360)">360p</button>
+                        <button class="quality-chip" data-quality="4320" onclick="setQuality(4320)">4K</button>
+                    </div>
+                </div>
+
+                <!-- Download Button -->
+                <div style="margin-top:20px; text-align:center;">
+                    <button class="btn btn-primary" onclick="startDownload()" style="width:100%; padding:16px;">
+                        ⬇️ Download Now
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section hidden" id="preview-section">
+            <div id="preview-container"></div>
+        </div>
+
+        <!-- Downloads Section -->
+        <div class="downloads-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <span class="icon">📥</span> Downloads
+                </div>
+                <span class="download-count" id="download-count">0</span>
+            </div>
+            <div class="download-list" id="download-list">
+                <div class="empty-state" id="empty-state">
+                    <div class="empty-state-icon">📭</div>
+                    <div class="empty-state-text">No downloads yet. Paste a URL above to get started!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            VidGrab &mdash; YouTube & TikTok Video Downloader &bull; For personal use only
+        </div>
+
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
