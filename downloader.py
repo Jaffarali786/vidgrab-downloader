@@ -199,11 +199,8 @@ def _build_ydl_opts(download_id: str, quality: int, plat: str) -> dict:
         }
     else:
         # YouTube: select best video+audio up to requested quality, with fallbacks
-        ydl_opts["format"] = (
-            f"bestvideo[height<={quality}][ext=mp4]+bestaudio[ext=m4a]"
-            f"/bestvideo[height<={quality}]+bestaudio"
-            f"/best[height<={quality}]"
-            f"/best"
+        ydl_opts["format"] = "best"
+            
         )
         # Postprocessors: merge into mp4 then convert if needed
         ydl_opts["postprocessors"] = [
