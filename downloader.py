@@ -72,7 +72,11 @@ def get_video_info(url: str) -> dict:
         "no_warnings": True,
         "skip_download": True,
         "no_color": True,
-        "cookiesfrombrowser": ("chrome",),
+        "extractor_args": {
+            "youtube": {
+        "player_client": ["android"]
+    }
+},
     }
 
     # Use cookies file if available (for YouTube bot verification bypass)
