@@ -72,7 +72,7 @@ def get_video_info(url: str) -> dict:
         "no_warnings": True,
         "skip_download": True,
         "no_color": True,
-        "cookiefile": "cookies.txt",
+        "cookiesfrombrowser": ("chrome",),
     }
 
     # Use cookies file if available (for YouTube bot verification bypass)
